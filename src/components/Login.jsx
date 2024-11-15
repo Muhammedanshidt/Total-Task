@@ -18,7 +18,9 @@ function Login() {
     if (phone.startsWith('+')) {
       dispatch(sendOtp(phone))
       .unwrap()
+
         .then(({ verificationId }) => {
+          console.log(verificationId)
           navigate('/verify', { state: { verificationId } });
         })
         .catch((err) => {

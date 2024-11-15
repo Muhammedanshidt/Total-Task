@@ -76,8 +76,8 @@ function SignUp() {
             </p>
           </div>
 
-          <div className="grid grid-cols-4 gap-4">
-            <div className="col-span-2">
+          <div className="grid grid-cols-6 gap-6">
+            <div className="col-span-3">
               {errors.firstName && (
                 <p className="text-red-500 text-sm mb-1">{errors.firstName}</p>
               )}
@@ -90,7 +90,7 @@ function SignUp() {
               />
             </div>
 
-            <div className="col-span-2">
+            <div className="col-span-3">
               {errors.lastName && (
                 <p className="text-red-500 text-sm mb-1">{errors.lastName}</p>
               )}
@@ -103,7 +103,7 @@ function SignUp() {
               />
             </div>
 
-            <div className="col-span-3">
+            <div className="col-span-4">
               {errors.email && (
                 <p className="text-red-500 text-sm mb-1">{errors.email}</p>
               )}
@@ -117,7 +117,7 @@ function SignUp() {
               />
             </div>
 
-            <div className="col-span-1">
+            <div className="col-span-2">
               {errors.phone && (
                 <p className="text-red-500 text-sm mb-1">{errors.phone}</p>
               )}

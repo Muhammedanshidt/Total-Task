@@ -12,7 +12,7 @@ export const sendOtp = createAsyncThunk(
     try {
       const confirmation = await signInWithPhoneNumber(auth, phoneNumber, recaptcha);
       recaptcha.clear();
-      console.log(confirmation);
+      // console.log(confirmation);
       return { phoneNumber, verificationId: confirmation.verificationId };
     } catch (error) {
       recaptcha.clear();
@@ -27,18 +27,32 @@ export const verifyOtp = createAsyncThunk(
   "user/verifyOtp",
   async ({ otp, verificationId }, { rejectWithValue }) => {
     try {
-      if (!verificationId) throw new Error("Verification ID not found");
+      if (!verificationId){
+        
+      }
+        // throw new Error("Verification ID is missing.");
+        
+        console.log("object");
+
       const credential = PhoneAuthProvider.credential(verificationId, otp);
-      const res = await signInWithCredential(auth, credential);
-      return { phoneNumber: res.user.phoneNumber, email: res.user.email };
+      
+      const result = await signInWithCredential(auth, credential);
+
+      console.log(result)
+
+      return { phone: result.user.phoneNumber};
+
     } catch (error) {
       if (error instanceof FirebaseError && error.code === "auth/invalid-verification-code") {
-        return rejectWithValue("Invalid OTP");
+        return rejectWithValue("Invalid OTP. Please try again.");
+      } else {  
+        console.error(error);
+        return rejectWithValue("OTP verification failed. Please try again.");
       }
-      return rejectWithValue("Failed to verify OTP");
     }
   }
 );
+
 
 const loginSlice = createSlice({
   name: 'login',
