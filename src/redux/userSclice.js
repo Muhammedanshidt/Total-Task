@@ -5,6 +5,7 @@ import { collection, addDoc } from "firebase/firestore";
 // Async action for creating a user
 export const createUser = createAsyncThunk(
     'user/createUser',
+
     async (userData, { rejectWithValue }) => {
         try {
             const docRef = await addDoc(collection(db, "users"), userData);

@@ -7,7 +7,6 @@ import Verification from './components/Verification'
 import Home from './components/home'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
