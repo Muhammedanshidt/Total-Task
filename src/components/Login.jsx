@@ -13,16 +13,23 @@ function Login() {
 
   const { loading, error } = useSelector((state) => state.user);
 
-  const handleSendOtp = async () => {
-    dispatch(sendOtp(phone))
+  const handleSendOtp = async () => {   
+
+    if (phone.startsWith('+')) {
+      dispatch(sendOtp(phone))
       .unwrap()
-      .then(({ verificationId }) => {
-        navigate('/verify', { state: { verificationId } });
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+        .then(({ verificationId }) => {
+          navigate('/verify', { state: { verificationId } });
+        })
+        .catch((err) => {
+          console.error(err);
+          alert("Failed to send OTP. Please try again.");
+        });
+    } else {
+      alert("Please enter a valid phone number with an international code");
+    }
   };
+  
 
   return (
     <div className='flex justify-around items-center'>

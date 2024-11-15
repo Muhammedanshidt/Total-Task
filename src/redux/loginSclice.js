@@ -8,10 +8,11 @@ import { FirebaseError } from "firebase/app";
 export const sendOtp = createAsyncThunk(
   "user/sendOtp",
   async (phoneNumber, { rejectWithValue }) => {
-    const recaptcha = new RecaptchaVerifier('recaptcha-container', { size: 'invisible' }, auth);
+    const recaptcha = new RecaptchaVerifier(auth,'recaptcha-container', {} );
     try {
       const confirmation = await signInWithPhoneNumber(auth, phoneNumber, recaptcha);
       recaptcha.clear();
+      console.log(confirmation);
       return { phoneNumber, verificationId: confirmation.verificationId };
     } catch (error) {
       recaptcha.clear();
