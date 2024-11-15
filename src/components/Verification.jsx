@@ -38,7 +38,7 @@ function Verification() {
 
   return (
     <div className='flex justify-around items-center'>
-      <div className='w-1/2 h-screen flex flex-col gap-4 px-10 py-5'>
+      <div className='h-screen flex flex-col justify-center gap-4 px-10 py-5'>
         <img src={Logo} alt="" className='size-20 mb-8' />
         <div className='font-semibold cursor-pointer my-3' onClick={() => navigate('/login')}>{`<`} back to login</div>
         <div className='flex flex-col gap-4 mx-6'>
@@ -67,7 +67,7 @@ function Verification() {
           </div>
         </div>
       </div>
-      <div className='flex justify-center'>
+      <div className='hidden lg:flex justify-center'>
         <img src={Image} className='size-3/5' />
       </div>
     </div>

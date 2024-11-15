@@ -53,6 +53,14 @@ export const verifyOtp = createAsyncThunk(
   }
 );
 
+export const logout = createAsyncThunk("user/logout", async () => {
+  try {
+    await auth.signOut();
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 
 const loginSlice = createSlice({
   name: 'login',
